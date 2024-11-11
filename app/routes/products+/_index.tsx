@@ -9,7 +9,7 @@ import {useQueryProductsList} from '~/services/products';
 import {SkeletonOnLoading} from '~/global/components/skeleton-on-loading';
 import {AppButton} from '~/global/components/app-button';
 
-import {ProductsTable} from './components/table';
+import {ProductsList} from './components';
 
 //
 //
@@ -30,9 +30,6 @@ export default function Products() {
   const {t} = useTranslation(['common']);
   const {data, isLoading} = useQueryProductsList();
 
-  //
-  //
-
   return (
     <>
       <Stack alignItems="flex-end" my={2}>
@@ -43,7 +40,7 @@ export default function Products() {
         </SkeletonOnLoading>
       </Stack>
 
-      <ProductsTable data={data?.result} isLoading={isLoading} />
+      <ProductsList products={data?.result} isLoading={isLoading} />
     </>
   );
 }
